@@ -11,20 +11,28 @@ const VideoPage = ({ params }: any) => {
   const filteredVideos = videos.filter((vid) => vid.id !== video?.id);
 
   return (
-    <div className="bg-gray-800 min-h-screen">
+    <div className="bg-gray-800 min-h-screen p-5">
       {video && (
-        <div>
+        <div className="mb-8">
           <VideoPlayer videoUrl={`/videos/${video.id}.mp4`} />
         </div>
       )}
-      <div className="p-5 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10">
-        {filteredVideos.map((vid) => (
-          <div className="w-full flex justify-center items-center" key={vid.id}>
-            <Link href={`/videoPage/${vid.id}`}>
-              <Thumbnail title={vid.title} imageSrc={vid.imageSrc} />
-            </Link>
-          </div>
-        ))}
+      <div className="bg-gray-900 p-5">
+        <h2 className="text-white text-lg mb-4 font-bold text-center">
+          Outros vídeos
+        </h2>
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5 lg:gap-10">
+          {filteredVideos.map((vid) => (
+            <div
+              className="w-full flex justify-center items-center"
+              key={vid.id}
+            >
+              <Link href={`/videoPage/${vid.id}`}>
+                <Thumbnail title={vid.title} imageSrc={vid.imageSrc} />
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
