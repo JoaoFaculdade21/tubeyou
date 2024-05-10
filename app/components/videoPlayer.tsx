@@ -31,17 +31,18 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl }) => {
 
   return (
     <div
-      className="w-full max-h-[80%]"
+      className="w-full max-w-[1080px] mx-auto my-auto relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={{ maxWidth: "1280px" }}
     >
-      <div className="relative">
+      <div className="relative" style={{ paddingTop: "56.25%" }}>
         <video
           ref={videoRef}
           src={videoUrl}
           controls
           autoPlay={isPlaying}
-          className="w-full h-auto"
+          className="absolute top-0 left-0 w-full h-full"
         />
         {isHovered && (
           <button
